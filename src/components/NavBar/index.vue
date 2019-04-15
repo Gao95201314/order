@@ -1,0 +1,115 @@
+// NavBar 组件
+<template>
+  <ul class="nav-bar">
+    <router-link
+      v-for="(item,index) in bars"
+      :key="index"
+      :class="item.id"
+      tag='li'
+      :to="item.path"
+      active-class="z-act"
+    >
+      <i class="img"></i>
+      <span v-text="item.name"></span>
+    </router-link>
+  </ul>
+</template>
+
+<script>
+export default {
+  name: "NavBar", // 也可以不写
+  data() {
+    return {
+      bars: [
+        {
+          id: "home",
+          path: "/home",
+          name: "首页"
+        },
+        {
+          id: "discover",
+          path: "/discover",
+          name: "发现"
+        },
+        {
+          id: "order",
+          path: "/order",
+          name: "订单"
+        },
+        {
+          id: "center",
+          path: "/center",
+          name: "个人中心"
+        }
+      ]
+    };
+  }
+};
+</script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+@import "../../styles/common/px2rem.scss";
+
+.nav-bar {
+  flex-shrink: 0; //不受兄弟挤压
+  display: flex;
+  height: px2rem(50);
+  border-top: px2rem(1) solid #ededed;
+  background: white;
+  z-index: 2;
+  img {
+    width: px2rem(21);
+    height: px2rem(21);
+  }
+  li {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: px2rem(12);
+    .img {
+      display: block;
+      width: px2rem(21);
+      height: px2rem(21);
+      background-size: 100%;
+    }
+    &.home {
+      .img {
+        background-image: url("./images/films.png");
+      }
+      &.z-act .img {
+        background-image: url("./images/films_on.png");
+      }
+    }
+    &.discover {
+      .img {
+        background-image: url("./images/cinemas.png");
+      }
+      &.z-act .img {
+        background-image: url("./images/cinemas_on.png");
+      }
+    }
+    &.center {
+      .img {
+        background-image: url("./images/center.png");
+      }
+      &.z-act .img {
+        background-image: url("./images/center_on.png");
+      }
+    }
+    &.order {
+      .img {
+        background-image: url("./images/shopcart.png");
+      }
+      &.z-act .img {
+        background-image: url("./images/shopcart_on.png");
+      }
+    }
+    //继承并有这个z-act类就显示高亮
+    &.z-act {
+      color: #ff5f16;
+    }
+  }
+}
+</style>
