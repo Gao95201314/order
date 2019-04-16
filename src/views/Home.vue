@@ -93,13 +93,17 @@
         <img src="https://fuss10.elemecdn.com/b/e1/0fa0ed514c093a7138b0b9a50d61fpng.png?imageMogr/format/webp/thumbnail/!240x160r/gravity/Center/crop/240x160/" />
       </router-link>
     </div>
-    <!-- <mt-swipe
-      :show-indicators="false"
-      style="height:150px"
-    >
-      <mt-swipe-item><img src="https://fuss10.elemecdn.com/d/f5/456ea6285819f7932d8606bffeb35jpeg.jpeg?imageMogr/format/webp/thumbnail/568x/"></mt-swipe-item>
-      <mt-swipe-item><img src=" https://fuss10.elemecdn.com/7/90/8012dcb83434050f0363316f24809jpeg.jpeg?imageMogr/format/webp/thumbnail/568x/"></mt-swipe-item>
-    </mt-swipe> -->
+    <div class="block">
+      <span class="demonstration"></span>
+      <el-carousel height="150px">
+        <el-carousel-item>
+          <img src="https://fuss10.elemecdn.com/d/f5/456ea6285819f7932d8606bffeb35jpeg.jpeg?imageMogr/format/webp/thumbnail/568x/">
+        </el-carousel-item>
+        <el-carousel-item>
+          <img src=" https://fuss10.elemecdn.com/7/90/8012dcb83434050f0363316f24809jpeg.jpeg?imageMogr/format/webp/thumbnail/568x/">
+        </el-carousel-item>
+      </el-carousel>
+    </div>
     <div class="tuijian">
       <p>—— 推荐商家 ——</p>
     </div>

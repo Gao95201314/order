@@ -139,6 +139,13 @@ const router = new VueRouter({
           import('./views/Components/Seller.vue')
       }]
     },
+    {
+      //添加评论
+      path: '/addEvaluate',
+      name: 'addEvaluate',
+      component: () =>
+        import('./views/Components/addEvaluate.vue')
+    },
   ]
 });
 

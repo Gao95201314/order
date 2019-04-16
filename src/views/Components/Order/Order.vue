@@ -3,6 +3,21 @@
     <div>
       <!-- {/* 单品宣传轮播图 */} -->
       <div class='publicityaa'>
+        <div class="block">
+          <span class="demonstration"></span>
+          <el-carousel>
+            <el-carousel-item
+              v-for="(item,index) in data"
+              :key="index"
+            >
+              <img
+                :src="item"
+                alt="elem"
+                style="width: '100%'; verticalAlign: 'top'"
+              />
+            </el-carousel-item>
+          </el-carousel>
+        </div>
         <!-- <mt-swipe :show-indicators="false">
           <mt-swipe-item
             v-for="(item,index) in data"

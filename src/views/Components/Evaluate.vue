@@ -113,7 +113,9 @@ export default {
       });
       console.log(this.evaluate);
     },
-    addEvaluate() {}
+    addEvaluate() {
+      this.$router.push("/addEvaluate");
+    }
   }
 };
 </script>
