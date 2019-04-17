@@ -140,7 +140,7 @@ const router = new VueRouter({
       }]
     },
     {
-      //添加评论
+      //添加评价
       path: '/addEvaluate',
       name: 'addEvaluate',
       component: () =>

@@ -1,31 +1,28 @@
 <template>
   <div class="evaluate">
-    <p
-      style="float:right;color:	#FF4500"
-      @click="fabu"
-    >发布</p>
+    <router-link
+      to="/shopDetail/evaluate"
+      class='iconfont icon-zuojiantou-'
+    ></router-link>
     <div class="pingfen">
-      <p style="">对商家评分</p>
+      <p style="text-align:center;color:#409EFF">对商家评分</p>
       <el-rate
-        v-model="value"
-        show-score
+        style="text-align:center;margin-bottom:10px"
+        v-model="sored"
+        show-text
         :allow-half="true"
-        :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
+        @change="changeScores"
+        :colors="['#99A9BF', '#F7BA2A', 'red']"
       >
       </el-rate>
-      <el-form :v-model="data">
-        <p>评语</p>
-        <el-form-item>
-          <el-input
-            type="textarea"
-            placeholder="菜品口味如何，服务周到吗？（写够15字才是好同志）"
-            v-model="data.value2"
-          ></el-input>
-        </el-form-item>
-      </el-form>
+      <el-input
+        type="textarea"
+        placeholder="菜品口味如何，服务周到吗？（写够15字才是好同志）"
+        v-model="pingyu"
+      ></el-input>
     </div>
     <div class="shangchuan">
-      <p>上传图片</p>
+      <p style="color:#409EFF;text-align:center">上传图片效果更好哟</p>
       <el-upload
         class="tupian"
         action="https://jsonplaceholder.typicode.com/posts/"
@@ -44,18 +41,25 @@
         >
       </el-dialog>
     </div>
+    <el-button
+      style="width:100%;"
+      type="primary"
+      @click="fabu"
+    >提交发布</el-button>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      value: 0,
-      data: {
-        value2: ""
-      },
+      sored: null,
+      pingyu: "",
       dialogImageUrl: "",
-      dialogVisible: false
+      dialogVisible: false,
+      fileListArr: [],
+      params: localStorage.getItem("scored")
+        ? JSON.parse(localStorage.getItem("scored"))
+        : []
     };
   },
   methods: {
@@ -70,9 +74,50 @@ export default {
     },
     //文件上传成功时的钩子
     shangSuccess(response, file, fileList) {
-      console.log(fileList);
+      this.fileListArr = fileList;
     },
-    fabu() {}
+    //改变后的分值
+    changeScores() {},
+    //提交发布
+    fabu() {
+      var sid = localStorage.getItem("shopId");
+      if (this.params.length == 0) {
+        var obj1 = {};
+        var obj2 = {};
+        var pingArr = [];
+        obj2.sored = this.sored;
+        obj2.pingyu = this.pingyu;
+        obj2.picture = this.fileListArr;
+        pingArr.push(obj2);
+        obj1.sid = sid;
+        obj1.pingScored = pingArr;
+        this.params.push(obj1);
+        localStorage.setItem("scored", JSON.stringify(this.params));
+      } else {
+        this.params.forEach((item, index) => {
+          if (item.sid == sid) {
+            var obj3 = {};
+            obj3.sored = this.sored;
+            obj3.pingyu = this.pingyu;
+            obj3.picture = this.fileListArr;
+            item.pingScored.push(obj3);
+          } else {
+            var obj1 = {};
+            var obj2 = {};
+            var pingArr = [];
+            obj2.sored = this.sored;
+            obj2.pingyu = this.pingyu;
+            obj2.picture = this.fileListArr;
+            pingArr.push(obj2);
+            obj1.sid = sid;
+            obj1.pingScored = pingArr;
+            this.params.push(obj1);
+          }
+        });
+        localStorage.setItem("scored", JSON.stringify(this.params));
+        this.$router.push({ name: "evaluate" });
+      }
+    }
   }
 };
 </script>
@@ -80,9 +125,14 @@ export default {
 <style rel="stylesheet/scss" lang="scss" scoped>
 @import "@/styles/common/px2rem.scss";
 .evaluate {
-  // background-color: #87cefa;
+  a {
+    text-decoration: none;
+  }
+  .icon-zuojiantou- {
+    color: #409eff;
+  }
   flex: 1;
-  background-image: linear-gradient(180deg, #87cefa, #00bfff);
+  background-image: linear-gradient(180deg, #ffffff, #f5f5f5);
   .pingfen {
     p {
       font-size: px2rem(18);
@@ -92,6 +142,8 @@ export default {
     }
   }
   .shangchuan {
+    background-color: white;
+    margin-top: px2rem(10);
     p {
       color: white;
       margin-bottom: px2rem(20);
