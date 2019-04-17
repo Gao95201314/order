@@ -54,7 +54,7 @@
             <p class='uesr-eva-pic'><img
                 v-for="(item2,index2) in item1.picture"
                 :key="index2"
-                :src='item2.name'
+                :src="require('../../images/'+item2.name)"
               /></p>
           </div>
         </li>
@@ -79,24 +79,29 @@ export default {
     addEvaluate() {
       this.$router.push("/addEvaluate");
     },
+    //获取评论
     getPingLunList() {
       this.pingLun = localStorage.getItem("scored")
         ? JSON.parse(localStorage.getItem("scored"))
         : [];
       var sid = localStorage.getItem("shopId");
       if (this.pingLun.length != 0) {
-        this.pingLun.forEach((item, index) => {
-          if (item.sid == sid) {
-            this.pingScored = item.pingScored;
+        for (let i = 0; i < this.pingLun.length; i++) {
+          if (this.pingLun[i].sid == sid) {
+            this.pingScored = this.pingLun[i].pingScored;
+            return;
           }
-        });
-        this.pingScored.forEach((item1, index1) => {
-          item1.picture.forEach((item2, index2) => {
-            item2.name = "file:///C:/Users/gao/Desktop/" + item2.name;
-          });
-        });
+        }
+        // this.pingScored.forEach((item1, index1) => {
+        //   item1.picture.forEach((item2, index2) => {
+        //     if (item2.name.substring(0, 1) == 2) {
+        //       item2.url1 = require("../../images/2.jpg");
+        //     } else if (item2.name.substring(0, 1) == 3) {
+        //       item2.url1 = require("../../images/3.jpg");
+        //     }
+        //   });
+        // });
       }
-      console.log(this.pingScored);
     }
   }
 };

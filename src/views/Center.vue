@@ -35,7 +35,10 @@
             ref="jiantou"
             v-show="username!=''"
           >
-            <i class="iconfont">＞</i>
+            <i
+              class="iconfont"
+              @click="toUpdateUser"
+            >＞</i>
           </span>
         </div>
       </section>
@@ -194,6 +197,7 @@ export default {
       //   this.$refs["baba"].style.display = "none";
       let userName = JSON.parse(localStorage.getItem("username"));
       this.username = userName;
+      this.userInfoUser = localStorage.getItem("user");
     }
   },
   methods: {
@@ -202,6 +206,9 @@ export default {
     },
     rules() {
       this.$router.push();
+    },
+    toUpdateUser() {
+      this.$router.push("/updateUser");
     }
   }
 };

@@ -28,7 +28,14 @@
         v-for="(item,index) in dataArr"
         :key="index"
       >
-        <!-- <p class="p1">湘赣情木桶饭</p> -->
+        <p
+          class="p1"
+          style="float:right"
+          @click="deleteFood(item.pid)"
+        ><i
+            class="el-icon-delete"
+            style="color:red"
+          ></i></p>
         <ul class="form">
           <li>
             <div>
@@ -114,6 +121,13 @@ export default {
     this.getWeek();
   },
   methods: {
+    // 得到数据
+    getData() {
+      this.dataArr = JSON.parse(
+        localStorage.getItem(this.username + "cartList")
+      );
+      console.log(this.dataArr);
+    },
     //处理分钟
     getDB(num) {
       return num < 10 ? "0" + num : num;
@@ -175,12 +189,6 @@ export default {
     close() {
       this.$refs["choose"].style.display = "none";
     },
-    // 得到数据
-    getData() {
-      this.dataArr = JSON.parse(
-        localStorage.getItem(this.username + "cartList")
-      );
-    },
     //返回到商家页面
     goBack() {
       this.$router.push("/shopDetail/order");
@@ -193,6 +201,18 @@ export default {
         return (tatolMoney += parseInt(price) * element.num);
       });
       return tatolMoney ? tatolMoney : 0;
+    },
+    deleteFood(pid) {
+      for (let i = 0; i < this.dataArr.length; i++) {
+        if (this.dataArr[i].pid == pid) {
+          this.dataArr.splice(i, 1);
+        }
+      }
+      localStorage.setItem(
+        this.username + "cartList",
+        JSON.stringify(this.dataArr)
+      );
+      console.log(this.dataArr);
     }
   }
 };

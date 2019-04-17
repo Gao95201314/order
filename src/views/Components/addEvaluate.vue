@@ -62,6 +62,11 @@ export default {
         : []
     };
   },
+  created() {
+    var paramss = localStorage.getItem("scored")
+      ? JSON.parse(localStorage.getItem("scored"))
+      : [];
+  },
   methods: {
     //文件列表移除文件时的钩子
     handleRemove(file, fileList) {
@@ -93,7 +98,7 @@ export default {
         obj1.pingScored = pingArr;
         this.params.push(obj1);
         localStorage.setItem("scored", JSON.stringify(this.params));
-      } else {
+      } else if (this.params.length != 0) {
         this.params.forEach((item, index) => {
           if (item.sid == sid) {
             var obj3 = {};
@@ -101,7 +106,8 @@ export default {
             obj3.pingyu = this.pingyu;
             obj3.picture = this.fileListArr;
             item.pingScored.push(obj3);
-          } else {
+            return;
+          } else if (item.sid != sid) {
             var obj1 = {};
             var obj2 = {};
             var pingArr = [];

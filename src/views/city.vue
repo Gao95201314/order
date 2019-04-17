@@ -48,7 +48,7 @@
 </template>
 <script>
 import cityName from "../api/cityName.json";
-// import { Toast } from "mint-ui";
+import { Toast } from "mint-ui";
 import { mapState, mapMutations } from "vuex";
 export default {
   data() {
@@ -71,10 +71,10 @@ export default {
     ...mapMutations(["changeCity"]),
     //锚点定位
     scrollToAnchor(anchorName) {
-      // Toast({
-      //   message: anchorName,
-      //   duration: 600
-      // });
+      Toast({
+        message: anchorName,
+        duration: 600
+      });
       if (anchorName) {
         // 找到锚点
         let anchorElement = document.getElementById(anchorName);

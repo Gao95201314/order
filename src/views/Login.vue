@@ -113,7 +113,7 @@ export default {
     login() {
       if (this.phone === "15111521187" && this.code !== "") {
         localStorage.setItem("username", this.phone);
-        localStorage.setItem("user", "客户" + this.phone);
+        localStorage.setItem("user", "32a2b96");
         let redirect = this.$route.query.redirect;
         if (redirect) {
           this.$router.push(redirect);
@@ -121,9 +121,9 @@ export default {
           this.$router.push("/");
         }
       } else if (this.code === "") {
-        // Toast.info("请输入验证码！");
+        Toast.info("请输入验证码！");
       } else {
-        // Toast.info("验证码错误！！");
+        Toast.info("验证码错误！！");
       }
     },
     //倒计时

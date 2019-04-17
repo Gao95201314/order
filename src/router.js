@@ -146,6 +146,13 @@ const router = new VueRouter({
       component: () =>
         import('./views/Components/addEvaluate.vue')
     },
+    {
+      //修改用户信息
+      path: '/updateUser',
+      name: 'updateUser',
+      component: () =>
+        import('./views/updateUserInfo.vue')
+    },
   ]
 });
 
