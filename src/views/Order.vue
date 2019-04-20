@@ -10,8 +10,14 @@
     <div class="s1">
       <div class="s1-1">
         <p>订单配送至家</p>
-        <div class="place">{{address}}<i class=" iconfont icon-youjiantou "></i></div>
-        <div class="xin">{{user}}</div>
+        <div
+          class="place"
+          @click="chooseAddress"
+        >{{address}}<i class=" iconfont icon-youjiantou "></i></div>
+        <div
+          class="xin"
+          v-show="address!='请选择地址'"
+        >{{username}}</div>
       </div>
       <ul class="song">
         <li>
@@ -28,14 +34,14 @@
         v-for="(item,index) in dataArr"
         :key="index"
       >
-        <p
+        <!-- <p
           class="p1"
           style="float:right"
           @click="deleteFood(item.pid)"
         ><i
             class="el-icon-delete"
             style="color:red"
-          ></i></p>
+          ></i></p> -->
         <ul class="form">
           <li>
             <div>
@@ -112,8 +118,9 @@ export default {
   },
   created() {
     this.username = localStorage.getItem("username");
-    this.address = localStorage.getItem("address");
-    this.user = localStorage.getItem("user");
+    this.address = localStorage.getItem("address")
+      ? localStorage.getItem("address")
+      : "请选择地址";
     this.time = this.dateToString();
     this.getData();
     this.addMinites();
@@ -126,7 +133,6 @@ export default {
       this.dataArr = JSON.parse(
         localStorage.getItem(this.username + "cartList")
       );
-      console.log(this.dataArr);
     },
     //处理分钟
     getDB(num) {
@@ -202,17 +208,20 @@ export default {
       });
       return tatolMoney ? tatolMoney : 0;
     },
-    deleteFood(pid) {
-      for (let i = 0; i < this.dataArr.length; i++) {
-        if (this.dataArr[i].pid == pid) {
-          this.dataArr.splice(i, 1);
-        }
-      }
-      localStorage.setItem(
-        this.username + "cartList",
-        JSON.stringify(this.dataArr)
-      );
-      console.log(this.dataArr);
+    //删除订单
+    // deleteFood(pid) {
+    //   for (let i = 0; i < this.dataArr.length; i++) {
+    //     if (this.dataArr[i].pid == pid) {
+    //       this.dataArr.splice(i, 1);
+    //     }
+    //   }
+    //   localStorage.setItem(
+    //     this.username + "cartList",
+    //     JSON.stringify(this.dataArr)
+    //   );
+    // }
+    chooseAddress() {
+      this.$router.push("/chooseAddress");
     }
   }
 };

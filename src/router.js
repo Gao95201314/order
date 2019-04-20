@@ -153,6 +153,27 @@ const router = new VueRouter({
       component: () =>
         import('./views/updateUserInfo.vue')
     },
+    {
+      //选择收货地址
+      path: '/chooseAddress',
+      name: 'chooseAddress',
+      component: () =>
+        import('./views/chooseAddress.vue')
+    },
+    {
+      //添加收货地址
+      path: '/addHomeAddress',
+      name: 'addHomeAddress',
+      component: () =>
+        import('./views/addHomeAddress.vue')
+    },
+    {
+      //编辑收货地址
+      path: '/editAddress/:id',
+      name: 'editAddress',
+      component: () =>
+        import('./views/editAddress.vue')
+    },
   ]
 });
 

@@ -32,11 +32,11 @@
               <div class='h3'>
                 <div><span>￥{{item2.price}}</span></div>
                 <div class='inandre'>
-                  <i
+                  <!-- <i
                     class='iconfont icon-jian1'
                     @click="redCart(item2)"
                   ></i>
-                  <span>{{goodNum(item2.pid)}}</span>
+                  <span>{{goodNum(item2.pid)}}</span> -->
                   <i
                     class='iconfont icon-jia'
                     @click="addCart(item2)"
@@ -51,7 +51,7 @@
     <!-- {/* 底部购物车 */} -->
     <div class="b">
       <div class="l">
-        <p> </p>
+        <p @click="maskshop"> </p>
         <div class="y">
           <span>￥{{payMoney()}}</span>
           <div class="zi">另需配送费￥5</div>
@@ -60,6 +60,47 @@
       <router-link to="/order">
         <div class="r">去结算</div>
       </router-link>
+    </div>
+    <!-- 购物车 -->
+    <div
+      class="mask-info"
+      ref="closeMask"
+      @click="closeMask"
+    >
+      <div class="carshop">
+        <div class="carshopTop"><span>已选商品</span><span><i
+              class="el-icon-delete"
+              style="color:red"
+              @click.stop="cleanAll"
+            >清空</i></span></div>
+        <div class="shangpin">
+          <ul>
+            <li>
+              <div
+                class="carshopFood"
+                v-for="(item,index) in cartList"
+                :key="index"
+              >
+                <div class="foodName">{{item.name}}</div>
+                <div class="foodPriceAnd">
+                  <div class="priceFood">￥{{item.price.substring(0,item.price.length-2)}}</div>
+                  <div class="jiaAndJian">
+                    <span class="jian"><i
+                        class='iconfont icon-jian1'
+                        @click.stop="jianFood(item.pid)"
+                      ></i></span>
+                    <span class="number">{{foodNum(item.pid)}}</span>
+                    <span class="jia"><i
+                        class='iconfont icon-jia'
+                        @click.stop="addFood(item.pid)"
+                      ></i></span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -225,6 +266,58 @@ export default {
       } else {
         return false;
       }
+    },
+    //底部购物车的图标
+    maskshop() {
+      this.$refs["closeMask"].style.display = "block";
+    },
+    closeMask() {
+      this.$refs["closeMask"].style.display = "none";
+    },
+    //购物车中对应商品数量
+    foodNum(pid) {
+      let cartGood = this.cartList.find(item => {
+        return item.pid === pid;
+      });
+      return cartGood ? cartGood.num : 0;
+    },
+    //减
+    jianFood(pid) {
+      let cartList = this.cartList;
+      for (let i = 0; i < cartList.length; i++) {
+        if (cartList[i].pid == pid) {
+          if (cartList[i].num == 1) {
+            cartList.splice(i, 1);
+          } else {
+            cartList[i].num = cartList[i].num - 1;
+          }
+        }
+      }
+      this.cartList = cartList;
+      localStorage.setItem(
+        this.username + "cartList",
+        JSON.stringify(this.cartList)
+      );
+    },
+    //加
+    addFood(pid) {
+      let cartList = this.cartList;
+      for (let i = 0; i < cartList.length; i++) {
+        if (cartList[i].pid == pid) {
+          cartList[i].num = cartList[i].num + 1;
+        }
+      }
+      this.cartList = cartList;
+      localStorage.setItem(
+        this.username + "cartList",
+        JSON.stringify(this.cartList)
+      );
+    },
+    //清空购物车所有商品
+    cleanAll() {
+      localStorage.removeItem(this.username + "cartList");
+      this.cartList = [];
+      this.$refs["closeMask"].style.display = "none";
     }
   }
 };
@@ -405,6 +498,63 @@ export default {
       font-size: px2rem(6);
       margin: px2rem(10) 0;
       color: #999;
+    }
+  }
+  .mask-info {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 92.5%;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    .carshop {
+      position: relative;
+      width: 100%;
+      // height: px2rem(500);
+      background-color: white;
+      position: absolute;
+      bottom: 0%;
+      font-size: px2rem(40);
+      .carshopTop {
+        display: flex;
+        justify-content: space-between;
+        color: #666;
+        height: px2rem(70);
+        background-color: #eceff1;
+        line-height: px2rem(50);
+        padding: px2rem(10);
+      }
+      .shangpin {
+        .carshopFood {
+          display: flex;
+          justify-content: space-between;
+          padding: px2rem(10);
+          height: px2rem(90);
+          border-bottom: px2rem(2) solid #eee;
+          line-height: px2rem(70);
+          .foodName {
+            flex: 2;
+          }
+          .foodPriceAnd {
+            display: flex;
+            justify-content: space-between;
+            flex: 1;
+            .priceFood {
+              color: red;
+            }
+            .jiaAndJian {
+              .jian {
+                color: #1e90ff;
+              }
+              .jia {
+                color: #1e90ff;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

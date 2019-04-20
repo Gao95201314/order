@@ -19,7 +19,7 @@
         <span>品牌</span>
       </div>
 
-      <!-- {/* 店铺名称 销售情况/中间弹出层*/} -->
+      <!-- {/* 店铺名称 销售情况*/} -->
       <div
         class='detail-shop'
         @click="maskSitch"
@@ -32,7 +32,7 @@
         </p>
       </div>
 
-      <!-- {/* 单品特价/优惠活动/底部弹出层 */} -->
+      <!-- {/* 单品特价/优惠活动*/} -->
       <div
         class='special-sprice'
         @click="maskBottom"
