@@ -4,7 +4,14 @@
       <section>
         <div class="profile-3g0uv">
           <div class="index-18Ili">
-            <span></span>
+            <img
+              src="../images/tou2.jpg"
+              alt=""
+              style="width: 80px;
+        height: 80px;
+        border-radius: 50%;
+              "
+            >
           </div>
           <div class="profile-xfCcC">
             <p class="profile-1_mtk">

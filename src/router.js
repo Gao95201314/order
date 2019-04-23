@@ -174,6 +174,13 @@ const router = new VueRouter({
       component: () =>
         import('./views/editAddress.vue')
     },
+    {
+      //修改用户名
+      path: '/updateUserName',
+      name: 'updateUserName',
+      component: () =>
+        import('./views/updateUserName.vue')
+    },
   ]
 });
 

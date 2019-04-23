@@ -9,7 +9,7 @@
         class="gao-img"
         style="margin-right:10px"
       ><img
-          src="../images/2.jpg"
+          src="../images/tou2.jpg"
           alt=""
         ></div>
     </div>
@@ -22,12 +22,15 @@
         class="gao-info"
         style="margin-right:10px;"
       >
-        <span style="color:#C0C0C0">{{userInfo}}<i class="el-icon-arrow-right"></i></span>
+        <span style="color:#C0C0C0">{{userInfo}}<i
+            class="el-icon-arrow-right"
+            @click="toUpdateName"
+          ></i></span>
       </div>
     </div>
     <el-button
       type="primary"
-      style="width:100%;margin-top:10px;"
+      style="width:100%;margin-top:10px;height:8%;font-size:20px;"
     >退出登录</el-button>
   </div>
 </template>
@@ -41,7 +44,11 @@ export default {
   created() {
     this.userInfo = localStorage.getItem("user");
   },
-  methods: {}
+  methods: {
+    toUpdateName() {
+      this.$router.push("/updateUserName");
+    }
+  }
 };
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
@@ -57,8 +64,8 @@ export default {
     align-items: center;
     .gao-img {
       img {
-        width: 50px;
-        height: 50px;
+        width: px2rem(60);
+        height: px2rem(60);
         border-radius: 50%;
       }
     }

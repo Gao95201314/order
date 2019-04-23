@@ -83,7 +83,8 @@ export default {
     },
     //根据商家进入到详情页面
     toDetail(sid) {
-      this.$router.push({ name: "shopDetail", params: { id: sid } });
+      this.$router.push("/shopDetail/order");
+      localStorage.setItem("shopId", sid);
     }
   }
 };

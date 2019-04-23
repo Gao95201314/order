@@ -9,6 +9,7 @@
         <li
           v-for="(item,index) in allAddress"
           :key="index"
+          @click="chooseAddress(item.address)"
         >
           <div class="addressInfo">
             <div class="left">
@@ -18,11 +19,11 @@
             <div class="right">
               <span class="adit"><i
                   class="el-icon-edit-outline"
-                  @click="editAddress(item.id)"
+                  @click.stop="editAddress(item.id)"
                 ></i></span>
               <span class="deleteAddress"><i
                   class="el-icon-close"
-                  @click="deleteAddress(item.id)"
+                  @click.stop="deleteAddress(item.id)"
                 ></i></span>
             </div>
           </div>
@@ -78,6 +79,10 @@ export default {
     //添加新地址
     addAddress() {
       this.$router.push("/addHomeAddress");
+    },
+    chooseAddress(address) {
+      localStorage.setItem("address", address);
+      this.$router.push("/order");
     }
   }
 };
