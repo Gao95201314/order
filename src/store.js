@@ -11,7 +11,7 @@ const store = new Vuex.Store({
   //一个仓库中有哪些东西
   //状态：放置整个项目中所有能够全局共用的状态
   state: {
-    curCity: '深圳',
+    curCity: '',
     myLove: '美国电影',
     //购物车数据
     filmsCard: localStorage.getItem('filmsCard') ? JSON.parse(localStorage.getItem('filmsCard')) : [],

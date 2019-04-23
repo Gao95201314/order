@@ -3,6 +3,7 @@
     <router-link
       to="/shopDetail/evaluate"
       class='iconfont icon-zuojiantou-'
+      style="font-size:25px"
     ></router-link>
     <div class="pingfen">
       <p style="text-align:center;color:#409EFF">对商家评分</p>
@@ -42,7 +43,7 @@
       </el-dialog>
     </div>
     <el-button
-      style="width:100%;"
+      style="width:100%;height:9%;font-size:18px"
       type="primary"
       @click="fabu"
     >提交发布</el-button>

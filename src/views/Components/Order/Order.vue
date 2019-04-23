@@ -5,7 +5,11 @@
       <div class='publicityaa'>
         <div class="block">
           <span class="demonstration"></span>
-          <el-carousel>
+          <el-carousel
+            arrow="never"
+            indicator-position="none"
+            height="95px"
+          >
             <el-carousel-item
               v-for="(item,index) in data"
               :key="index"
@@ -39,49 +43,49 @@
           <li>
             <img
               alt="elem"
-              src="//fuss10.elemecdn.com/1/5c/7b9cdd261290e3282037981a283c0png.png?imageMogr/format/webp/thumbnail/240x/"
+              src="//fuss10.elemecdn.com/f/73/645a9dc56249fd49ae07ef93f2a2djpeg.jpeg?imageMogr/format/webp/thumbnail/240x/"
             />
-            <p class='goods-title'>金拱门桶A组合</p>
+            <p class='goods-title'>A组合</p>
             <p class='goods-sales'>月售15 好评率100%</p>
             <div>
               <span><i class='iconfont icon-renminbi'></i>66.6</span>
-              <i class='iconfont icon-jia'></i>
+              <!-- <i class='iconfont icon-jia'></i> -->
             </div>
           </li>
           <li>
             <img
               alt="elem"
-              src="//fuss10.elemecdn.com/a/e6/76b819c6d684c787facc792a588afpng.png?imageMogr/format/webp/thumbnail/240x/"
+              src="//fuss10.elemecdn.com/c/c8/34f45de2f6e213743ba976c537ab7jpeg.jpeg?imageMogr/format/webp/thumbnail/240x/"
             />
             <p class='goods-title'>无辣不欢组合</p>
             <p class='goods-sales'>月售8 好评率89%</p>
             <div>
               <span><i class='iconfont icon-renminbi'></i>58.8</span>
-              <i class='iconfont icon-jia'></i>
+              <!-- <i class='iconfont icon-jia'></i> -->
             </div>
           </li>
           <li>
             <img
               alt="elem"
-              src="//fuss10.elemecdn.com/2/8c/f48d207e6b18dc7b21012d5e6a3fajpeg.jpeg?imageMogr/format/webp/thumbnail/240x/"
+              src="//fuss10.elemecdn.com/d/33/841750b7cc2bd7e86b2c5ded2e46fjpeg.jpeg?imageMogr/format/webp/thumbnail/240x/"
             />
-            <p class='goods-title'>麦乐送*饿了么精选套餐</p>
+            <p class='goods-title'>两人套餐饭</p>
             <p class='goods-sales'>月售15 好评率100%</p>
             <div>
               <span><i class='iconfont icon-renminbi'></i>88.8</span>
-              <i class='iconfont icon-jia'></i>
+              <!-- <i class='iconfont icon-jia'></i> -->
             </div>
           </li>
           <li>
             <img
               alt="elem"
-              src="//fuss10.elemecdn.com/1/5c/7b9cdd261290e3282037981a283c0png.png?imageMogr/format/webp/thumbnail/240x/"
+              src="//fuss10.elemecdn.com/c/c7/ba8cbc5eae0bc242da93942ebde91jpeg.jpeg?imageMogr/format/webp/thumbnail/240x/"
             />
-            <p class='goods-title'>金拱门桶B组合</p>
+            <p class='goods-title'>香芋地瓜丸</p>
             <p class='goods-sales'>月售8 好评率60%</p>
             <div>
               <span><i class='iconfont icon-renminbi'></i>38.9</span>
-              <i class='iconfont icon-jia'></i>
+              <!-- <i class='iconfont icon-jia'></i> -->
             </div>
           </li>
         </ul>

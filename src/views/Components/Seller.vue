@@ -24,11 +24,11 @@
     <div class='delivery-info seller-info'>
       <h2>商家信息</h2>
       <ul>
-        <li>麦当劳</li>
-        <li><span>品类</span><span class='xiangxi'>汉堡, 炸鸡炸串</span></li>
+        <li>各类</li>
+        <li><span>品类</span><span class='xiangxi'>各类</span></li>
         <li><span>商家电话</span><span class='xiangxi'>4000517117</span></li>
-        <li><span>地址</span><span class='xiangxi'>深圳市宝安区深圳市空港油料有限公司第二加油站（加气）配套用房</span></li>
-        <li><span>营业时间</span><span class='xiangxi'>07:00-10:15,10:30-23:55</span></li>
+        <li><span>地址</span><span class='xiangxi'>湖南省怀化市鹤城区城东新区农贸市场4号门面</span></li>
+        <li><span>营业时间</span><span class='xiangxi'>08:00-19:30</span></li>
       </ul>
     </div>
     <p class='bgbg'></p>

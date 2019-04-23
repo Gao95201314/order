@@ -20,11 +20,11 @@
     <p class='bgbg'></p>
     <div class='evaluate'>
       <ul class='evaluate-type'>
-        <li class='cur-type'>全部&nbsp;<span>250</span></li>
-        <li class=''>满意&nbsp;<span>239</span></li>
+        <li class='cur-type'>全部&nbsp;</li>
+        <!-- <li class=''>满意&nbsp;<span>239</span></li> -->
         <!-- {/* bad-type-cur选中不满意 */} -->
-        <li class='bad-type'>不满意&nbsp;<span>5</span></li>
-        <li class=''>有图&nbsp;<span>19</span></li>
+        <!-- <li class='bad-type'>不满意&nbsp;<span>5</span></li> -->
+        <!-- <li class=''>有图&nbsp;<span>19</span></li> -->
         <li
           style="color:white;background:#0097ff"
           @click="addEvaluate"

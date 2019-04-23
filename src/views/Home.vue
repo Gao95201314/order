@@ -7,7 +7,7 @@
     <div
       class="goTop"
       :style="goTop"
-      @click="scrollToAnchor()"
+      @click.stop="scrollToAnchor()"
     ><img
         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTM4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOCAxMSkiIGZpbGw9IiM5OTkiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHJlY3QgeD0iMi4yMzkiIHdpZHRoPSI5OC41MjIiIGhlaWdodD0iOC45MTciIHJ4PSI0LjQ1OCIvPjxyZWN0IHRyYW5zZm9ybT0icm90YXRlKDkwIDUxLjUgNjIuNDE3KSIgeD0iNi43MTciIHk9IjU3Ljk1OCIgd2lkdGg9Ijg5LjU2NSIgaGVpZ2h0PSI4LjkxNyIgcng9IjQuNDU4Ii8+PHJlY3QgdHJhbnNmb3JtPSJzY2FsZSgtMSAxKSByb3RhdGUoNDUgMCAtMjUuNzU3KSIgeD0iLTYuNjcxIiB5PSI0MC4xNzEiIHdpZHRoPSI3MS42NTIiIGhlaWdodD0iOC45MTciIHJ4PSI0LjQ1OCIvPjxyZWN0IHRyYW5zZm9ybT0icm90YXRlKDQ1IDczLjkzOCA0NC42MykiIHg9IjM4LjExMiIgeT0iNDAuMTcxIiB3aWR0aD0iNzEuNjUyIiBoZWlnaHQ9IjguOTE3IiByeD0iNC40NTgiLz48L2c+PC9zdmc+"
         alt=""
@@ -95,7 +95,10 @@
     </div>
     <div class="block">
       <span class="demonstration"></span>
-      <el-carousel height="150px">
+      <el-carousel
+        height="150px"
+        arrow="never"
+      >
         <el-carousel-item>
           <img src="https://fuss10.elemecdn.com/d/f5/456ea6285819f7932d8606bffeb35jpeg.jpeg?imageMogr/format/webp/thumbnail/568x/">
         </el-carousel-item>
@@ -109,7 +112,10 @@
     </div>
     <div class="paixu">
       <p>综合排序</p>
-      <p>距离最近</p>
+      <p
+        @click.stop="range()"
+        style="cursor: pointer;"
+      >距离最近</p>
       <p>品质联盟</p>
       <p>筛选</p>
 
@@ -297,9 +303,17 @@ export default {
         anchorElement.scrollIntoView({ block: "start", behavior: "smooth" });
       }
     },
+    //去到相应的商家详情页面
     detailPage(sid) {
       this.$router.push("/shopDetail/order");
       localStorage.setItem("shopId", sid);
+    },
+    //根据距离最近来排序
+    range() {
+      console.log(1);
+      return (this.list = this.list.sort((a, b) => {
+        return a.juli - b.juli;
+      }));
     }
   }
 };

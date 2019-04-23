@@ -1,15 +1,15 @@
 [
   {
     "sid": "E12391706077170609665",
-    "name": "85度C（上海金杨店）",
+    "name": "85度C",
     "logo": "https://fuss10.elemecdn.com/d/40/1a5e84599a16985eb92b65b739891jpeg.jpeg",
     "province": "上海市",
     "city": "上海市",
     "address": "上海市浦东新区金杨路481号1层",
     "latitude": 31.249102,
     "longitude": 121.579782,
-    "juli":862,
-    "minite":53,
+    "juli": 862,
+    "minite": 53,
     "categories": [
       {
         "parent_cat": "甜品饮品",
@@ -3925,8 +3925,8 @@
     "address": "浦东新区金杨路458号底层",
     "latitude": 31.248636,
     "longitude": 121.579813,
-    "juli":634,
-    "minite":48,
+    "juli": 634,
+    "minite": 48,
     "categories": [
       {
         "parent_cat": "快餐便当",
@@ -5977,8 +5977,8 @@
     "address": "中国（上海）自由贸易试验区新金桥路255号128室",
     "latitude": 31.248775,
     "longitude": 121.59943,
-    "juli":24,
-    "minite":15,
+    "juli": 24,
+    "minite": 15,
     "categories": [
       {
         "parent_cat": "快餐便当",
@@ -7681,8 +7681,8 @@
     "address": "浦东新区张杨路3918号11号楼1层12号商铺",
     "latitude": 31.255685,
     "longitude": 121.581825,
-    "juli":543,
-    "minite":34,
+    "juli": 543,
+    "minite": 34,
     "categories": [
       {
         "parent_cat": "甜品饮品",
@@ -8910,7 +8910,7 @@
     "address": "中国(上海）自由贸易试验区浙桥路200号1幢地下一层T17-B1-03室",
     "latitude": 31.251225,
     "longitude": 121.599823,
-    "juli":26,
+    "juli": 26,
     "categories": [
       {
         "parent_cat": "快餐便当",
@@ -12045,8 +12045,8 @@
     "address": "浦东新区张杨路3918号11号楼一层14号商铺",
     "latitude": 31.255375,
     "longitude": 121.581183,
-    "juli":364,
-    "minite":25,
+    "juli": 364,
+    "minite": 25,
     "categories": [
       {
         "parent_cat": "小吃夜宵",
@@ -13969,8 +13969,8 @@
     "address": "上海市浦东新区台儿庄路443号",
     "latitude": 31.258178,
     "longitude": 121.594339,
-    "juli":568,
-    "minite":46,
+    "juli": 568,
+    "minite": 46,
     "categories": [
       {
         "parent_cat": "小吃夜宵",
@@ -15792,8 +15792,8 @@
     "address": "上海市浦东新区张杨路3918号1层04-1号",
     "latitude": 31.255482,
     "longitude": 121.581317,
-    "juli":786,
-    "minite":49,
+    "juli": 786,
+    "minite": 49,
     "categories": [
       {
         "parent_cat": "快餐便当",
@@ -17382,8 +17382,8 @@
     "address": "上海市浦东新区张杨路3918弄1层17号商铺",
     "latitude": 31.255482,
     "longitude": 121.581317,
-    "juli":895,
-    "minite":59,
+    "juli": 895,
+    "minite": 59,
     "categories": [
       {
         "parent_cat": "快餐便当",
@@ -21033,8 +21033,8 @@
     "address": "浦东新区平度路258号6号楼B104室",
     "latitude": 31.254732,
     "longitude": 121.591103,
-    "juli":987,
-    "minite":68,
+    "juli": 987,
+    "minite": 68,
     "categories": [
       {
         "parent_cat": "面包蛋糕",
