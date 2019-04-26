@@ -2,7 +2,7 @@
   <div>
     <div>
       <!-- {/* 单品宣传轮播图 */} -->
-      <div class='publicityaa'>
+      <!-- <div class='publicityaa'>
         <div class="block">
           <span class="demonstration"></span>
           <el-carousel
@@ -22,69 +22,23 @@
             </el-carousel-item>
           </el-carousel>
         </div>
-        <!-- <mt-swipe :show-indicators="false">
-          <mt-swipe-item
-            v-for="(item,index) in data"
-            :key="index"
-          >
-            <img
-              :key="index"
-              :src="item"
-              alt="elem"
-              style="width: '100%'; verticalAlign: 'top'"
-            />
-          </mt-swipe-item>
-        </mt-swipe> -->
-      </div>
+      </div> -->
       <h2>商家推荐</h2>
       <!-- {/* 商家推荐 ul横向滚动列表 */} -->
       <div class='recommend'>
         <ul>
-          <li>
+          <li
+            v-for="(item,index) in elemGoods"
+            :key="index"
+          >
             <img
               alt="elem"
-              src="//fuss10.elemecdn.com/f/73/645a9dc56249fd49ae07ef93f2a2djpeg.jpeg?imageMogr/format/webp/thumbnail/240x/"
+              :src="item.images[0]"
             />
-            <p class='goods-title'>A组合</p>
-            <p class='goods-sales'>月售15 好评率100%</p>
+            <p class='goods-title'>{{item.name}}</p>
+            <p class='goods-sales'>月售{{item.month_sales_count}}好评率{{item.recommends_rate}}</p>
             <div>
-              <span><i class='iconfont icon-renminbi'></i>66.6</span>
-              <!-- <i class='iconfont icon-jia'></i> -->
-            </div>
-          </li>
-          <li>
-            <img
-              alt="elem"
-              src="//fuss10.elemecdn.com/c/c8/34f45de2f6e213743ba976c537ab7jpeg.jpeg?imageMogr/format/webp/thumbnail/240x/"
-            />
-            <p class='goods-title'>无辣不欢组合</p>
-            <p class='goods-sales'>月售8 好评率89%</p>
-            <div>
-              <span><i class='iconfont icon-renminbi'></i>58.8</span>
-              <!-- <i class='iconfont icon-jia'></i> -->
-            </div>
-          </li>
-          <li>
-            <img
-              alt="elem"
-              src="//fuss10.elemecdn.com/d/33/841750b7cc2bd7e86b2c5ded2e46fjpeg.jpeg?imageMogr/format/webp/thumbnail/240x/"
-            />
-            <p class='goods-title'>两人套餐饭</p>
-            <p class='goods-sales'>月售15 好评率100%</p>
-            <div>
-              <span><i class='iconfont icon-renminbi'></i>88.8</span>
-              <!-- <i class='iconfont icon-jia'></i> -->
-            </div>
-          </li>
-          <li>
-            <img
-              alt="elem"
-              src="//fuss10.elemecdn.com/c/c7/ba8cbc5eae0bc242da93942ebde91jpeg.jpeg?imageMogr/format/webp/thumbnail/240x/"
-            />
-            <p class='goods-title'>香芋地瓜丸</p>
-            <p class='goods-sales'>月售8 好评率60%</p>
-            <div>
-              <span><i class='iconfont icon-renminbi'></i>38.9</span>
+              <span><i class='iconfont icon-renminbi'></i>{{item.price}}</span>
               <!-- <i class='iconfont icon-jia'></i> -->
             </div>
           </li>
@@ -99,18 +53,40 @@
 <script>
 // import { Swipe, SwipeItem } from "mint-ui";
 import goodlist from "./GoodsList.vue";
+import data from "@/api/date.json";
 export default {
   name: "Order",
   components: { goodlist },
   data() {
     return {
-      data: [
-        "//fuss10.elemecdn.com/4/31/27fb8498c5beb0a18f5fe07e4b541png.png?imageMogr/format/webp/thumbnail/686x/",
-        "//fuss10.elemecdn.com/8/5d/5c17e8c37ae87fd9ad46d84d57eccpng.png?imageMogr/format/webp/thumbnail/686x/",
-        "//fuss10.elemecdn.com/7/1b/eac126f486afd64f30ac6889c358cpng.png?imageMogr/format/webp/thumbnail/686x/",
-        "//fuss10.elemecdn.com/4/f3/cdb5977b8a152cf3d8100147f8807png.png?imageMogr/format/webp/thumbnail/686x/"
-      ]
+      elemGoods: [],
+      shopName: ""
     };
+  },
+  created() {
+    this.getShopDetailList();
+  },
+  methods: {
+    //获取推荐数据
+    getShopDetailList() {
+      let shopId = localStorage.getItem("shopId");
+      let dataList = [];
+      data.map(item => {
+        if (item.sid === shopId) {
+          dataList[0] = item;
+          this.shopName = item.name;
+        }
+        return dataList[0];
+      });
+      let products = dataList[0].products;
+      products.map(item => {
+        return item.products.map(i => {
+          return (i.num = 1);
+        });
+      });
+      this.elemGoods = products[0].products;
+      this.elemGoods = this.elemGoods.slice(2, 6);
+    }
   }
 };
 </script>

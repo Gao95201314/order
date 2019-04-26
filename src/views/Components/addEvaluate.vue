@@ -43,7 +43,7 @@
       </el-dialog>
     </div>
     <el-button
-      style="width:100%;height:9%;font-size:18px"
+      style="width:100%;height:7%;font-size:18px"
       type="primary"
       @click="fabu"
     >提交发布</el-button>
@@ -84,6 +84,11 @@ export default {
     },
     //改变后的分值
     changeScores() {},
+    //格式化时间
+    formatDate(time) {
+      var moment = require("moment");
+      return moment(time).format("YYYY-MM-DD");
+    },
     //提交发布
     fabu() {
       var sid = localStorage.getItem("shopId");
@@ -91,8 +96,13 @@ export default {
         var obj1 = {};
         var obj2 = {};
         var pingArr = [];
+        var date = new Date();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var dateArr = this.formatDate(new Date());
         obj2.sored = this.sored;
         obj2.pingyu = this.pingyu;
+        obj2.allTime = dateArr;
         obj2.picture = this.fileListArr;
         pingArr.push(obj2);
         obj1.sid = sid;
@@ -103,8 +113,10 @@ export default {
         this.params.forEach((item, index) => {
           if (item.sid == sid) {
             var obj3 = {};
+            var dateArr = this.formatDate(new Date());
             obj3.sored = this.sored;
             obj3.pingyu = this.pingyu;
+            obj3.allTime = dateArr;
             obj3.picture = this.fileListArr;
             item.pingScored.push(obj3);
             return;
@@ -112,8 +124,10 @@ export default {
             var obj1 = {};
             var obj2 = {};
             var pingArr = [];
+            var dateArr = this.formatDate(new Date());
             obj2.sored = this.sored;
             obj2.pingyu = this.pingyu;
+            obj2.allTime = dateArr;
             obj2.picture = this.fileListArr;
             pingArr.push(obj2);
             obj1.sid = sid;

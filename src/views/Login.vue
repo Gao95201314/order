@@ -4,10 +4,10 @@
       <div class="App-3Q8Qb">
         <div class="LoginHeader-1jXn6">
           <div class="img">
-            <img
+            <!-- <img
               src='../images/login-logo.jpg'
               alt=""
-            />
+            /> -->
           </div>
         </div>
         <div>
@@ -64,7 +64,7 @@ import cook from "../utils/cookie";
 import cook2 from "../utils/cookie2";
 import cook3 from "../utils/cookie3";
 import getCookieValue from "../utils/cookie3";
-// import { Toast } from "mint-ui";
+import { Toast } from "mint-ui";
 export default {
   name: "Login",
   data() {
@@ -99,14 +99,16 @@ export default {
             console.log(res.data.body, "短信发送成功!");
             this.$refs["dis"].style.color = "gray";
             this.code = res.data.body.codes;
-            cook("secondsremained", 60, 60);
+            cook("secondsremained", 60, 60); //设置过期时间并进行加密
             const countdown = getCookieValue("secondsremained")
               ? getCookieValue("secondsremained")
-              : 0;
+              : 0; //获取时间，并进行解密
             if (countdown !== undefined && countdown > 0) {
-              this.settime();
+              this.settime(); //调用倒计时减减方法
             }
           });
+      } else {
+        Toast.info("手机号错误！！");
       }
     },
     //登录
@@ -138,7 +140,7 @@ export default {
           this.captchaBtnText = `已发送` + countdown + "s";
           countdown--;
         }
-        cook2("secondsremained", countdown, countdown + 1);
+        cook2("secondsremained", countdown, countdown + 1); //设置减减之后过期时间
       }, 1000);
     }
   },

@@ -28,7 +28,7 @@
               /></div>
             <div class='goods-det'>
               <h2>{{item2.name}}</h2>
-              <p>不素之霸双层牛堡1份 双层深海狭鳕鱼堡1份 川辣双鸡堡1份 那么大鸡排1块 麦乐鸡5块 那么大鲜柠特饮可乐 3*660ml</p><span>月售{i.month_sales_count}份</span>
+              <p>{{item2.desc}}</p><span>月售{{item2.month_sales_count}}份</span>
               <div class='h3'>
                 <div><span>￥{{item2.price}}</span></div>
                 <div class='inandre'>
@@ -48,7 +48,7 @@
         </div>
       </dl>
     </div>
-    <!-- {/* 底部购物车 */} -->
+    <!-- {/*底部购物车图标*/} -->
     <div class="b">
       <div class="l">
         <p @click="maskshop"> </p>
@@ -57,10 +57,14 @@
           <div class="zi">另需配送费￥5</div>
         </div>
       </div>
-      <router-link to="/order">
-        <div class="r">去结算</div>
-      </router-link>
+
+      <div
+        class="r"
+        @click="goToPay"
+      >去结算</div>
+
     </div>
+
     <!-- 购物车 -->
     <div
       class="mask-info"
@@ -113,7 +117,8 @@ export default {
       arr: [],
       cartList: [],
       elemGoods: [],
-      username: ""
+      username: "",
+      shopName: ""
     };
   },
   created() {
@@ -137,7 +142,7 @@ export default {
         }
       }
     },
-    // 获取侧边字
+    // 侧边分类名
     getcategory() {
       for (var i = 0; i < this.elemGoods.length; i++) {
         this.arr.push(this.elemGoods[i].category);
@@ -166,6 +171,7 @@ export default {
       data.map(item => {
         if (item.sid === shopId) {
           dataList[0] = item;
+          this.shopName = item.name;
         }
         return dataList[0];
       });
@@ -179,7 +185,7 @@ export default {
     },
     // 加入购物车
     addCart(food) {
-      var flag = false; //默认存在
+      var flag = false; //默认不存在
       var index = 0; //获取下标
       for (var i = 0; i < this.cartList.length; i++) {
         if (this.cartList[i].pid === food.pid) {
@@ -210,6 +216,7 @@ export default {
       } else {
         // 不存在
         let data2 = this.cartList;
+        food.shopName = this.shopName;
         data2.push(food);
         this.cartList = data2;
         localStorage.setItem(
@@ -318,6 +325,9 @@ export default {
       localStorage.removeItem(this.username + "cartList");
       this.cartList = [];
       this.$refs["closeMask"].style.display = "none";
+    },
+    goToPay() {
+      this.$router.push("/sureOrder");
     }
   }
 };
@@ -535,6 +545,7 @@ export default {
           border-bottom: px2rem(2) solid #eee;
           line-height: px2rem(70);
           .foodName {
+            font-size: px2rem(30);
             flex: 2;
           }
           .foodPriceAnd {
@@ -543,6 +554,7 @@ export default {
             flex: 1;
             .priceFood {
               color: red;
+              font-size: px2rem(30);
             }
             .jiaAndJian {
               .jian {

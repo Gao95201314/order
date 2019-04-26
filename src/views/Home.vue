@@ -28,7 +28,7 @@
       <router-link
         to="/search"
         class="food"
-      ><span class="iconfont icon-sousuo ">搜索商家、商品名称</span></router-link>
+      ><span class="iconfont icon-sousuo ">搜索商家名称</span></router-link>
     </div>
     <div class="huadong">
       <ul class="banner">
@@ -111,7 +111,10 @@
       <p>—— 推荐商家 ——</p>
     </div>
     <div class="paixu">
-      <p>综合排序</p>
+      <p
+        @click.stop="zongSort()"
+        style="cursor: pointer;"
+      >综合排序</p>
       <p
         @click.stop="range()"
         style="cursor: pointer;"
@@ -255,7 +258,8 @@ export default {
             "https://fuss10.elemecdn.com/a/8a/ec21096d528b7cfd23cdd894f01c6jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
         }
       ],
-      list: []
+      list: [],
+      replayDate: []
     };
   },
   created() {
@@ -310,11 +314,12 @@ export default {
     },
     //根据距离最近来排序
     range() {
-      console.log(1);
       return (this.list = this.list.sort((a, b) => {
         return a.juli - b.juli;
       }));
-    }
+    },
+    //综合排序
+    zongSort() {}
   }
 };
 </script>
@@ -349,7 +354,6 @@ export default {
   height: 100%;
   overflow-y: scroll;
   height: px2rem(1000);
-
   .header {
     height: px2rem(50);
     background-image: linear-gradient(90deg, #0af, #0085ff);

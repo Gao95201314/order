@@ -234,12 +234,12 @@ export default {
       h2 {
         font-size: px2rem(42);
         color: #333;
-
         span {
           display: inline-block;
           line-height: px2rem(45);
-          width: px2rem(510);
+          width: px2rem(300);
           overflow: hidden;
+          margin-left: px2rem(100);
           text-overflow: ellipsis;
           white-space: nowrap;
         }

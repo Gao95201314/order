@@ -38,28 +38,28 @@ const router = new VueRouter({
           name: 'center',
           component: () =>
             import('./views/Center.vue')
-        }
-        /* {
-          // 购物车
-          path: 'shopcart',
-          name: 'shopcart',
+        },
+        {
+          // 订单
+          path: '/order',
+          name: 'order',
           component: () =>
-            import('./views/ShopCart')
-           beforeEnter(to, from, next) {
-            if (localStorage.getItem('userphone')) {
+            import('./views/Order.vue'),
+          beforeEnter(to, from, next) {
+            if (localStorage.getItem('username')) {
               next();
             } else {
               // 注意，如果需要实现，拦截到登陆页面之后，登录成功回跳到那个页面。
               //localStorage.setItem('myNeedPage','/user/card');
               next({
-                path: '/user/login',
+                path: '/login',
                 query: {
                   redirect: to.fullPath
                 }
               });
             }
-          } 
-        }, */
+          }
+        },
       ]
     },
     {
@@ -77,25 +77,25 @@ const router = new VueRouter({
         import('./views/detailCity.vue')
     },
     {
-      // 订单页
-      path: '/order',
-      name: 'order',
+      // 确认订单
+      path: '/sureOrder',
+      name: 'sureOrder',
       component: () =>
-        import('./views/Order.vue'),
-      beforeEnter(to, from, next) {
-        if (localStorage.getItem('username')) {
-          next();
-        } else {
-          // 注意，如果需要实现，拦截到登陆页面之后，登录成功回跳到那个页面。
-          //localStorage.setItem('myNeedPage','/user/card');
-          next({
-            path: '/login',
-            query: {
-              redirect: to.fullPath
-            }
-          });
-        }
-      }
+        import('./views/sureOrder.vue')
+      // beforeEnter(to, from, next) {
+      //   if (localStorage.getItem('username')) {
+      //     next();
+      //   } else {
+      //     // 注意，如果需要实现，拦截到登陆页面之后，登录成功回跳到那个页面。
+      //     //localStorage.setItem('myNeedPage','/user/card');
+      //     next({
+      //       path: '/login',
+      //       query: {
+      //         redirect: to.fullPath
+      //       }
+      //     });
+      //   }
+      // }
     },
     {
       //选择城市路由

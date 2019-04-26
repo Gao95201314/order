@@ -26,7 +26,7 @@
         <!-- <li class='bad-type'>不满意&nbsp;<span>5</span></li> -->
         <!-- <li class=''>有图&nbsp;<span>19</span></li> -->
         <li
-          style="color:white;background:#0097ff"
+          style="color:#0097ff;border:1px solid #0097ff"
           @click="addEvaluate"
         >添加评价</li>
       </ul>
@@ -39,7 +39,7 @@
         >
           <div class='user-head'>tou</div>
           <div class='user-evaluate'>
-            <p class='uesr-and-time'><span class='uesr-eva-name'>用户名...</span><span>2019-01-03</span></p>
+            <p class='uesr-and-time'><span class='uesr-eva-name'>用户名...</span><span>{{item1.allTime}}</span></p>
             {{item1.pingyu}}
             <p class='uesr-eva-grade'>
               <el-rate
