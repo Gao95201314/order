@@ -147,6 +147,13 @@ const router = new VueRouter({
         import('./views/Components/addEvaluate.vue')
     },
     {
+      //食物详情
+      path: '/foodDetail',
+      name: 'foodDetail',
+      component: () =>
+        import('./views/Components/foodDetail.vue')
+    },
+    {
       //修改用户信息
       path: '/updateUser',
       name: 'updateUser',

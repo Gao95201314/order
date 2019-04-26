@@ -21,6 +21,7 @@
           <dd
             v-for="(item2,index2) in elemGoods[index1].products"
             :key="index2"
+            @click.stop="goToDetail(item2)"
           >
             <div class='goods-pic'><img
                 :src="item2.images"
@@ -273,6 +274,9 @@ export default {
       } else {
         return false;
       }
+    },
+    goToDetail(food) {
+      this.$router.push({ name: "foodDetail", params: { food: food } });
     },
     //底部购物车的图标
     maskshop() {
