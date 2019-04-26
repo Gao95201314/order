@@ -7,8 +7,8 @@
             <img
               src="../images/tou2.jpg"
               alt=""
-              style="width: 80px;
-        height: 80px;
+              style="width: 60px;
+        height: 60px;
         border-radius: 50%;
               "
             >

@@ -258,8 +258,7 @@ export default {
             "https://fuss10.elemecdn.com/a/8a/ec21096d528b7cfd23cdd894f01c6jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
         }
       ],
-      list: [],
-      replayDate: []
+      list: []
     };
   },
   created() {
@@ -319,7 +318,16 @@ export default {
       }));
     },
     //综合排序
-    zongSort() {}
+    zongSort() {
+      var zongScore = 0;
+      for (let i = 0; i < date.length; i++) {
+        zongScore = date[i].month_sales_count * 0.15 + date[i].score * 0.1;
+        date[i].zongheScore = zongScore.toFixed(2);
+      }
+      return (this.list = this.list.sort((a, b) => {
+        return a.zongheScore - b.zongheScore;
+      }));
+    }
   }
 };
 </script>

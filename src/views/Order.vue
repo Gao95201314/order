@@ -54,12 +54,8 @@ export default {
 @import "@/styles/common/px2rem.scss";
 .order {
   flex: 1;
-  // bottom: 0;
-  // height: 100%;
-  // display: flex;
-  // overflow-y: scroll;
-  // flex-direction: column;
-  // height: px2rem(1000);
+  overflow-y: scroll;
+  height: px2rem(1000);
   background-color: #f5f5f5;
   .orderBox {
     width: 100%;

@@ -77,7 +77,8 @@
     >
       <transition
         class='r'
-        enter-active-class='animated flash'
+        enter-active-class='animated fadeInUp'
+        leave-active-class="animated fadeInDown"
       >
         <div class="popup">
           <h2><span class='sprice-icon'>品牌</span>{{shopData.name}}</h2>
@@ -105,7 +106,8 @@
     >
       <transition
         class='r'
-        enter-active-class='animated flash'
+        enter-active-class='animated fadeInUp'
+        leave-active-class="animated fadeInDown"
       >
         <div
           class='popup'
