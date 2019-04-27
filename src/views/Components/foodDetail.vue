@@ -3,7 +3,10 @@
     <div class="tupian"><img
         :src="foodObj.images[0]"
         alt=""
-      ><span><i class="el-icon-close"></i></span></div>
+      ><span><i
+          class="el-icon-close"
+          @click="goToback"
+        ></i></span></div>
     <div class="food">
       <p>{{foodObj.name}}</p>
       <p>月销{{foodObj.month_sales_count}}份 好评率{{foodObj.recommends_rate}}</p>
@@ -72,6 +75,9 @@ export default {
           JSON.stringify(this.cartList)
         );
       }
+    },
+    goToback() {
+      this.$router.push("/shopDetail/order");
     }
   }
 };
@@ -91,10 +97,16 @@ export default {
       display: inline-block;
       width: px2rem(50);
       height: px2rem(50);
-      background-color: #2395ff;
+      background-color: black;
       border-radius: 50%;
+      opacity: 0.2;
+      position: absolute;
+      top: px2rem(25);
+      right: px2rem(25);
       .el-icon-close {
         color: white;
+        margin-left: px2rem(5);
+        margin-top: px2rem(5);
       }
     }
   }
