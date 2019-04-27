@@ -40,7 +40,7 @@
                   <span>{{goodNum(item2.pid)}}</span> -->
                   <i
                     class='iconfont icon-jia'
-                    @click="addCart(item2)"
+                    @click.stop="addCart(item2)"
                   ></i>
                 </div>
               </div>

@@ -31,6 +31,7 @@
     <el-button
       type="primary"
       style="width:100%;margin-top:10px;height:8%;font-size:20px;"
+      @click="layOutLogin"
     >退出登录</el-button>
   </div>
 </template>
@@ -38,15 +39,23 @@
 export default {
   data() {
     return {
-      userInfo: ""
+      userInfo: "",
+      username: ""
     };
   },
   created() {
     this.userInfo = localStorage.getItem("user");
+    this.username = localStorage.getItem("username");
   },
   methods: {
+    //去到修改用户名页面
     toUpdateName() {
       this.$router.push("/updateUserName");
+    },
+    layOutLogin() {
+      localStorage.setItem("username", "");
+      localStorage.setItem("user", "");
+      this.$router.push("/login");
     }
   }
 };

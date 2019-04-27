@@ -4,10 +4,10 @@
       <div class="App-3Q8Qb">
         <div class="LoginHeader-1jXn6">
           <div class="img">
-            <!-- <img
-              src='../images/login-logo.jpg'
+            <img
+              src='../images/elme.jpg'
               alt=""
-            /> -->
+            />
           </div>
         </div>
         <div>
@@ -32,8 +32,7 @@
             <section class="MessageLogin-FsPlX">
               <input
                 placeholder="验证码"
-                :value="code"
-                @change="handleGetCodeValue($event)"
+                v-model="code"
               />
             </section>
             <div id="_umfp"></div>
@@ -87,9 +86,9 @@ export default {
       }
     },
     //验证码
-    handleGetCodeValue(e) {
-      this.code = e.target.value;
-    },
+    // handleGetCodeValue() {
+    //   this.code = e.target.value;
+    // },
     //获取验证码
     getPhonecode() {
       if (this.phone === "15111521187") {
@@ -98,7 +97,7 @@ export default {
           .then(res => {
             console.log(res.data.body, "短信发送成功!");
             this.$refs["dis"].style.color = "gray";
-            this.code = res.data.body.codes;
+            this.codes = res.data.body.codes;
             cook("secondsremained", 60, 60); //设置过期时间并进行加密
             const countdown = getCookieValue("secondsremained")
               ? getCookieValue("secondsremained")
@@ -108,12 +107,19 @@ export default {
             }
           });
       } else {
-        Toast.info("手机号错误！！");
+        Toast({
+          message: "手机号码错误",
+          duration: 1000
+        });
       }
     },
     //登录
     login() {
-      if (this.phone === "15111521187" && this.code !== "") {
+      if (
+        this.phone === "15111521187" &&
+        this.code !== "" &&
+        this.code === this.codes
+      ) {
         localStorage.setItem("username", this.phone);
         localStorage.setItem("user", "32a2b96");
         let redirect = this.$route.query.redirect;
@@ -123,9 +129,15 @@ export default {
           this.$router.push("/");
         }
       } else if (this.code === "") {
-        Toast.info("请输入验证码！");
+        Toast({
+          message: "请输入验证码！！",
+          duration: 1000
+        });
       } else {
-        Toast.info("验证码错误！！");
+        Toast({
+          message: "验证码错误！！",
+          duration: 1000
+        });
       }
     },
     //倒计时
@@ -182,8 +194,8 @@ export default {
       .LoginHeader-1jXn6 {
         text-align: center;
         img {
-          width: px2rem(140);
-          height: px2rem(56);
+          width: px2rem(300);
+          height: px2rem(150);
         }
       }
     }

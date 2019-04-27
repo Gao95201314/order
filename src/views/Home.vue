@@ -94,16 +94,15 @@
       </router-link>
     </div>
     <div class="block">
-      <span class="demonstration"></span>
       <el-carousel
         height="150px"
         arrow="never"
       >
-        <el-carousel-item>
-          <img src="https://fuss10.elemecdn.com/d/f5/456ea6285819f7932d8606bffeb35jpeg.jpeg?imageMogr/format/webp/thumbnail/568x/">
-        </el-carousel-item>
-        <el-carousel-item>
-          <img src=" https://fuss10.elemecdn.com/7/90/8012dcb83434050f0363316f24809jpeg.jpeg?imageMogr/format/webp/thumbnail/568x/">
+        <el-carousel-item
+          v-for="(item,index) in lunbo"
+          :key="index"
+        >
+          <img :src="item">
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -257,6 +256,11 @@ export default {
           imgUrl:
             "https://fuss10.elemecdn.com/a/8a/ec21096d528b7cfd23cdd894f01c6jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
         }
+      ],
+      lunbo: [
+        "https://fuss10.elemecdn.com/7/90/8012dcb83434050f0363316f24809jpeg.jpeg?imageMogr/format/webp/thumbnail/568x/",
+        "https://fuss10.elemecdn.com/d/f5/456ea6285819f7932d8606bffeb35jpeg.jpeg?imageMogr/format/webp/thumbnail/568x/",
+        "https://fuss10.elemecdn.com/7/05/bb01f6e34c18a0e12d39b7c98e6f6jpeg.jpeg?imageMogr/format/webp/thumbnail/568x/"
       ],
       list: []
     };

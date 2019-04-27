@@ -84,7 +84,7 @@ export default {
       this.allAddress.push(this.params);
       localStorage.setItem("allAddress", JSON.stringify(this.allAddress));
       Toast({
-        message: "恭喜，保存成功",
+        message: "恭喜，添加成功",
         duration: 800
       });
       this.$router.push("/chooseAddress");

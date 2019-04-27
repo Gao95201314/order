@@ -82,7 +82,7 @@ export default {
     },
     chooseAddress(address) {
       localStorage.setItem("address", address);
-      this.$router.push("/order");
+      this.$router.push("/sureOrder");
     }
   }
 };
