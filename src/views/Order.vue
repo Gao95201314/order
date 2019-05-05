@@ -23,7 +23,7 @@
         </div>
         <div class="orderBottom">
           <div class="orderName">
-            <!-- 秀才米线套餐等商品 -->
+            {{item.address}}
           </div>
           <div class="price">
             ￥{{item.totalPrice}}

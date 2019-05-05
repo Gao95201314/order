@@ -260,6 +260,7 @@ export default {
       }
       obj.orderTime = dateArr;
       obj.totalPrice = this.allprice;
+      obj.address = this.address;
       this.orderList.unshift(obj);
       localStorage.setItem(
         this.username + "orderList",

@@ -188,6 +188,13 @@ const router = new VueRouter({
       component: () =>
         import('./views/updateUserName.vue')
     },
+    {
+      //查看更多
+      path: '/viewMuch',
+      name: 'viewMuch',
+      component: () =>
+        import('./views/viewMuch.vue')
+    },
   ]
 });
 

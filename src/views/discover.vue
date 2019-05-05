@@ -64,7 +64,7 @@
       </div>
       <div
         class="gao-discover-content-more"
-        onClick={this.toUrl}
+        @click="seeMuch"
       >
         查看更多<i class="iconfont icon-chevron-copy-copy"></i>
       </div>
@@ -78,7 +78,11 @@ export default {
   data() {
     return {};
   },
-  methods: {}
+  methods: {
+    seeMuch() {
+      this.$router.push("/viewMuch");
+    }
+  }
 };
 </script>
 
@@ -302,6 +306,7 @@ export default {
       height: px2rem(40);
       color: #999;
       font-size: px2rem(15);
+      cursor: pointer;
     }
   }
   &-bottom {
