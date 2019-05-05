@@ -61,12 +61,14 @@ export default {
         address: "",
         doorHao: ""
       },
-      allAddress: []
+      allAddress: [],
+      username: ""
     };
   },
   created() {
-    this.allAddress = localStorage.getItem("allAddress")
-      ? JSON.parse(localStorage.getItem("allAddress"))
+    this.username = localStorage.getItem("username");
+    this.allAddress = localStorage.getItem(this.username + "allAddress")
+      ? JSON.parse(localStorage.getItem(this.username + "allAddress"))
       : [];
   },
   methods: {
@@ -82,7 +84,10 @@ export default {
       var id = rand(1000, 9999);
       this.params.id = id;
       this.allAddress.push(this.params);
-      localStorage.setItem("allAddress", JSON.stringify(this.allAddress));
+      localStorage.setItem(
+        this.username + "allAddress",
+        JSON.stringify(this.allAddress)
+      );
       Toast({
         message: "恭喜，添加成功",
         duration: 800

@@ -62,12 +62,14 @@ export default {
         doorHao: ""
       },
       allAddress: [],
-      id: ""
+      id: "",
+      username: ""
     };
   },
   created() {
-    this.allAddress = localStorage.getItem("allAddress")
-      ? JSON.parse(localStorage.getItem("allAddress"))
+    this.username = localStorage.getItem("username");
+    this.allAddress = localStorage.getItem(this.username + "allAddress")
+      ? JSON.parse(localStorage.getItem(this.username + "allAddress"))
       : [];
     this.id = this.$route.params.id;
     this.getAddressInfo();
@@ -96,7 +98,10 @@ export default {
         }
       }
       this.allAddress = arr;
-      localStorage.setItem("allAddress", JSON.stringify(this.allAddress));
+      localStorage.setItem(
+        this.username + "allAddress",
+        JSON.stringify(this.allAddress)
+      );
       Toast({
         message: "恭喜，保存成功",
         duration: 800

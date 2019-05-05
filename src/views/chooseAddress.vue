@@ -43,12 +43,14 @@ import { Toast } from "mint-ui";
 export default {
   data() {
     return {
-      allAddress: []
+      allAddress: [],
+      username: ""
     };
   },
   created() {
-    this.allAddress = localStorage.getItem("allAddress")
-      ? JSON.parse(localStorage.getItem("allAddress"))
+    this.username = localStorage.getItem("username");
+    this.allAddress = localStorage.getItem(this.username + "allAddress")
+      ? JSON.parse(localStorage.getItem(this.username + "allAddress"))
       : [];
   },
   methods: {
@@ -70,7 +72,10 @@ export default {
         }
       }
       this.addAddress = arr;
-      localStorage.setItem("allAddress", JSON.stringify(this.addAddress));
+      localStorage.setItem(
+        this.username + "allAddress",
+        JSON.stringify(this.addAddress)
+      );
       Toast({
         message: "恭喜，删除成功",
         duration: 800
