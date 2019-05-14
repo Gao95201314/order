@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <!-- {/* 单品宣传轮播图 */} -->
+      <!--  单品宣传轮播图 -->
       <!-- <div class='publicityaa'>
         <div class="block">
           <span class="demonstration"></span>
@@ -24,7 +24,7 @@
         </div>
       </div> -->
       <h2>商家推荐</h2>
-      <!-- {/* 商家推荐 ul横向滚动列表 */} -->
+      <!--商家推荐 ul横向滚动列表-->
       <div class='recommend'>
         <ul>
           <li
@@ -44,14 +44,12 @@
           </li>
         </ul>
       </div>
-
-      <!-- {/* 商品列表 */} -->
+      <!--商品列表-->
       <goodlist></goodlist>
     </div>
   </div>
 </template>
 <script>
-// import { Swipe, SwipeItem } from "mint-ui";
 import goodlist from "./GoodsList.vue";
 import data from "@/api/date.json";
 export default {

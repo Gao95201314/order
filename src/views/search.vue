@@ -9,7 +9,7 @@
         ref="search"
         i="search"
         type="search"
-        placeholder="输入商家、商品名称"
+        placeholder="输入商家名称"
         @change="search"
       />
       <p>搜索</p>

@@ -101,7 +101,7 @@ export default {
             cook("secondsremained", 60, 60); //设置过期时间并进行加密
             const countdown = getCookieValue("secondsremained")
               ? getCookieValue("secondsremained")
-              : 0; //获取时间，并进行解密
+              : 0; //获取过期的时间，并进行解密
             if (countdown !== undefined && countdown > 0) {
               this.settime(); //调用倒计时减减方法
             }

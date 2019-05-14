@@ -79,7 +79,7 @@ export default {
     //保存
     addAddress() {
       function rand(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
+        return Math.floor(Math.random() * (max - min)) + min; //Math.floor向下取整
       }
       var id = rand(1000, 9999);
       this.params.id = id;

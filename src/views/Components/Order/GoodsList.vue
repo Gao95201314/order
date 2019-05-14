@@ -110,6 +110,7 @@
   </div>
 </template>
 <script>
+import { Toast } from "mint-ui";
 import data from "@/api/date.json";
 export default {
   data() {
@@ -150,12 +151,12 @@ export default {
       }
     },
     // 判断食品数量
-    goodNum(id) {
+    /* goodNum(id) {
       let cartGood = this.cartList.find(item => {
         return item.pid === id;
       });
       return cartGood ? cartGood.num : 0;
-    },
+    }, */
     // 食品总额
     payMoney() {
       let tatolMoney = 0;
@@ -187,7 +188,7 @@ export default {
     // 加入购物车
     addCart(food) {
       var flag = false; //默认不存在
-      var index = 0; //获取下标
+      var index = 0; //设置下标
       for (var i = 0; i < this.cartList.length; i++) {
         if (this.cartList[i].pid === food.pid) {
           flag = true;
@@ -203,12 +204,10 @@ export default {
         let updateData = Object.assign({}, cartList[index], { num: num });
         for (var j = 0; j < cartList.length; j++) {
           if (cartList[j].pid === food.pid) {
-            cartList.splice(j, 1, updateData);
+            cartList.splice(j, 1, updateData); //删除这个index索引的数据，然后添加updateData数据
             break;
           }
         }
-        // console.log(cartList);
-        // console.log(updateData);
         this.cartList = cartList;
         localStorage.setItem(
           this.username + "cartList",
@@ -226,55 +225,55 @@ export default {
         );
       }
     },
-
     // 从购物减去
-    redCart(food) {
-      var flag = false; //默认存在
-      var index = 0; //获取下标
-      for (var i = 0; i < this.cartList.length; i++) {
-        if (this.cartList[i].pid === food.pid) {
-          flag = true;
-          index = i;
-          break;
-        } else {
-          flag = false;
+    /*  redCart(food) {
+        var flag = false; //默认存在
+        var index = 0; //获取下标
+        for (var i = 0; i < this.cartList.length; i++) {
+          if (this.cartList[i].pid === food.pid) {
+            flag = true;
+            index = i;
+            break;
+          } else {
+            flag = false;
+          }
         }
-      }
-      if (flag) {
-        // 存在
-        if (this.cartList[index].num === 1) {
+        if (flag) {
+          // 存在
+          if (this.cartList[index].num === 1) {
+            let cartList = this.cartList;
+            for (var k = 0; k < cartList.length; k++) {
+              if (cartList[k].pid === food.pid) {
+                cartList.splice(k, 1);
+                break;
+              }
+            }
+            this.cartList = cartList;
+            localStorage.setItem(
+              this.username + "cartList",
+              JSON.stringify(this.cartList)
+            );
+            return false;
+          }
+          let num = this.cartList[index].num - 1;
           let cartList = this.cartList;
-          for (var k = 0; k < cartList.length; k++) {
-            if (cartList[k].pid === food.pid) {
-              cartList.splice(k, 1);
+          let updateData = Object.assign({}, cartList[index], { num: num });
+          for (var j = 0; j < cartList.length; j++) {
+            if (cartList[j].pid === food.pid) {
+              cartList.splice(j, 1, updateData);
               break;
             }
           }
           this.cartList = cartList;
           localStorage.setItem(
             this.username + "cartList",
-            JSON.stringify(this.cartList)
+            JSON.stringify(this.state.cartList)
           );
-          return false;
-        }
-        let num = this.cartList[index].num - 1;
-        let cartList = this.cartList;
-        let updateData = Object.assign({}, cartList[index], { num: num });
-        for (var j = 0; j < cartList.length; j++) {
-          if (cartList[j].pid === food.pid) {
-            cartList.splice(j, 1, updateData);
-            break;
-          }
-        }
-        this.cartList = cartList;
-        localStorage.setItem(
-          this.username + "cartList",
-          JSON.stringify(this.state.cartList)
-        );
-      } else {
+        } else {
         return false;
-      }
-    },
+        }
+      }, */
+    //去到商品详情页面
     goToDetail(food) {
       this.$router.push({ name: "foodDetail", params: { food: food } });
     },
@@ -331,7 +330,14 @@ export default {
       this.$refs["closeMask"].style.display = "none";
     },
     goToPay() {
-      this.$router.push("/sureOrder");
+      if (localStorage.getItem(this.username + "cartList")) {
+        this.$router.push("/sureOrder");
+      } else {
+        Toast({
+          message: "请先添加菜品",
+          duration: 800
+        });
+      }
     }
   }
 };

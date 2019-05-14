@@ -30,7 +30,7 @@
         class="food"
       ><span class="iconfont icon-sousuo ">搜索商家名称</span></router-link>
     </div>
-    <div class="huadong">
+    <!-- <div class="huadong">
       <ul class="banner">
         <li
           v-for="(item,index) in banners"
@@ -65,9 +65,9 @@
           </router-link>
         </li>
       </ul>
-    </div>
+    </div> -->
     <div class="special">
-      <p> <img src="https://fuss10.elemecdn.com/8/0e/4dd212d831becab6e3ebd484c0941jpeg.jpeg?imageMogr/format/webp/thumbnail/34x/" /><span className='h2'>超级会员·</span>每月领20元红包</p>
+      <p><img src="https://fuss10.elemecdn.com/8/0e/4dd212d831becab6e3ebd484c0941jpeg.jpeg?imageMogr/format/webp/thumbnail/34x/" /><span className='h2'>超级会员·</span>每月领20元红包</p>
       <router-link
         to="#"
         class="on"
@@ -158,105 +158,6 @@ export default {
   data() {
     return {
       goTop: { display: "none" },
-      banner: [
-        {
-          discribe: "麻辣烫",
-          imgUrl:
-            "https://fuss10.elemecdn.com/e/c7/b7ba9547aa700bd20d0420e1794a8jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "素食简餐",
-          imgUrl:
-            "https://fuss10.elemecdn.com/0/1a/314b6da88ab6c7ae9828f91652d40jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "地方小吃",
-          imgUrl:
-            "https://fuss10.elemecdn.com/7/d6/6f2631288a44ec177204e05cbcb93jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "大牌惠吃",
-          imgUrl:
-            "https://fuss10.elemecdn.com/a/7b/b02bd836411c016935d258b300cfejpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "米粉面管",
-          imgUrl:
-            "https://fuss10.elemecdn.com/e/89/185f7259ebda19e16123884a60ef2jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "包子粥店",
-          imgUrl:
-            "https://fuss10.elemecdn.com/5/1a/dc885d2ce022d2ee60495acafb795jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "炸鸡炸串",
-          imgUrl:
-            "https://fuss10.elemecdn.com/a/78/0fb469b2da210827ec16896e00420jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "汉堡披萨",
-          imgUrl:
-            "https://fuss10.elemecdn.com/b/7f/432619fb21a40b05cd25d11eca02djpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "鸭脖卤味",
-          imgUrl:
-            "https://fuss10.elemecdn.com/b/70/9fd298fa84d49748984e082777e90jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        }
-      ],
-      banners: [
-        {
-          discribe: "美食",
-          imgUrl:
-            "https://fuss10.elemecdn.com/7/d8/a867c870b22bc74c87c348b75528djpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "下午茶",
-          imgUrl:
-            "https://fuss10.elemecdn.com/7/a9/77ff360f7d3fde2d459727ad09fcfjpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "商场便利",
-          imgUrl:
-            "https://fuss10.elemecdn.com/c/7e/76a23eb90dada42528bc41499d6f8jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "水果",
-          imgUrl:
-            "https://fuss10.elemecdn.com/0/d0/dd7c960f08cdc756b1d3ad54978fdjpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "医药健康",
-          imgUrl:
-            "https://fuss10.elemecdn.com/7/0a/af108e256ebc9f02db599592ae655jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "鲜花绿植",
-          imgUrl:
-            "https://fuss10.elemecdn.com/3/01/c888acb2c8ba9e0c813f36ec9e90ajpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "厨房生鲜",
-          imgUrl:
-            "https://fuss10.elemecdn.com/c/21/e42997b86b232161a5a16ab813ae8jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "甜品饮品",
-          imgUrl:
-            "https://fuss10.elemecdn.com/2/35/696aa5cf9820adada9b11a3d14bf5jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "签到领红包",
-          imgUrl:
-            "https://fuss10.elemecdn.com/5/de/bebe83947afee0b0f38257b0e3866jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        },
-        {
-          discribe: "地方菜系",
-          imgUrl:
-            "https://fuss10.elemecdn.com/a/8a/ec21096d528b7cfd23cdd894f01c6jpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/"
-        }
-      ],
       lunbo: [
         "https://fuss10.elemecdn.com/7/90/8012dcb83434050f0363316f24809jpeg.jpeg?imageMogr/format/webp/thumbnail/568x/",
         "https://fuss10.elemecdn.com/d/f5/456ea6285819f7932d8606bffeb35jpeg.jpeg?imageMogr/format/webp/thumbnail/568x/",

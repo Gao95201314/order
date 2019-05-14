@@ -25,6 +25,9 @@ export default {
       username: ""
     };
   },
+  created() {
+    this.username = localStorage.getItem("user");
+  },
   methods: {
     changeUser() {
       localStorage.setItem("user", this.username);

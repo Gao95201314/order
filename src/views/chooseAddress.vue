@@ -56,7 +56,7 @@ export default {
   methods: {
     //返回到上一级
     goBack() {
-      this.$router.push("/order");
+      this.$router.push("/sureOrder");
     },
     //编辑地址
     editAddress(id) {

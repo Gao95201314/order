@@ -149,7 +149,7 @@ export default {
     },
     //处理时间
     dateToString() {
-      var date = new Date().getTime();
+      var date = new Date().getTime(); //获取当前时间戳
       var dateStr = "";
       let date1 = date + 600000;
       let date2 = new Date(date1);
@@ -186,7 +186,8 @@ export default {
         dateArray[0],
         parseInt(dateArray[1] - 1),
         dateArray[2]
-      );
+      ); //转成这种格式Tue May 14 2019 00:00:00 GMT+0800 (中国标准时间)
+
       var week = "星期" + "日一二三四五六".charAt(date.getDay());
       this.nowWeek = week; // 赋值本地数据
     },
@@ -236,7 +237,7 @@ export default {
     chooseAddress() {
       this.$router.push("/chooseAddress");
     },
-    //去支付
+    //确认订单并支付
     goPayMoney() {
       Toast({
         message: "支付成功",
