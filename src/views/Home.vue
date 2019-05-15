@@ -245,7 +245,7 @@ export default {
     text-decoration: none;
   }
   .goTop {
-    position: fixed;
+    position: absolute;
     z-index: 9999999999;
     border-radius: 50%;
     background: #fff;

@@ -465,7 +465,8 @@ export default {
   // 底部购物车
   .b {
     height: px2rem(100) !important;
-    width: 100%;
+    // width: 100%;
+    width: px2rem(750);
     position: fixed;
     bottom: 0;
     z-index: 9;

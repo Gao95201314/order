@@ -92,7 +92,39 @@ export default {
     //提交发布
     fabu() {
       var sid = localStorage.getItem("shopId");
-      if (this.params.length == 0) {
+      var flag = true; //定义一个变量
+      if (localStorage.getItem("scored")) {
+        this.params.forEach((item, index) => {
+          if (item.sid == sid) {
+            var obj3 = {};
+            var dateArr = this.formatDate(new Date());
+            obj3.sored = this.sored;
+            obj3.pingyu = this.pingyu;
+            obj3.allTime = dateArr;
+            obj3.picture = this.fileListArr;
+            item.pingScored.push(obj3);
+            flag = false;
+            return;
+          }
+        });
+        if (flag) {
+          var obj1 = {};
+          var obj2 = {};
+          var pingArr = [];
+          var date = new Date();
+          var hour = date.getHours();
+          var minute = date.getMinutes();
+          var dateArr = this.formatDate(new Date());
+          obj2.sored = this.sored;
+          obj2.pingyu = this.pingyu;
+          obj2.allTime = dateArr;
+          obj2.picture = this.fileListArr;
+          pingArr.push(obj2);
+          obj1.sid = sid;
+          obj1.pingScored = pingArr;
+          this.params.push(obj1);
+        }
+      } else {
         var obj1 = {};
         var obj2 = {};
         var pingArr = [];
@@ -108,36 +140,9 @@ export default {
         obj1.sid = sid;
         obj1.pingScored = pingArr;
         this.params.push(obj1);
-        localStorage.setItem("scored", JSON.stringify(this.params));
-      } else if (this.params.length != 0) {
-        this.params.forEach((item, index) => {
-          if (item.sid == sid) {
-            var obj3 = {};
-            var dateArr = this.formatDate(new Date());
-            obj3.sored = this.sored;
-            obj3.pingyu = this.pingyu;
-            obj3.allTime = dateArr;
-            obj3.picture = this.fileListArr;
-            item.pingScored.push(obj3);
-            return;
-          } else if (item.sid != sid) {
-            var obj1 = {};
-            var obj2 = {};
-            var pingArr = [];
-            var dateArr = this.formatDate(new Date());
-            obj2.sored = this.sored;
-            obj2.pingyu = this.pingyu;
-            obj2.allTime = dateArr;
-            obj2.picture = this.fileListArr;
-            pingArr.push(obj2);
-            obj1.sid = sid;
-            obj1.pingScored = pingArr;
-            this.params.push(obj1);
-          }
-        });
-        localStorage.setItem("scored", JSON.stringify(this.params));
-        this.$router.push({ name: "evaluate" });
       }
+      localStorage.setItem("scored", JSON.stringify(this.params));
+      this.$router.push({ name: "evaluate" });
     }
   }
 };

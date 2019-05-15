@@ -109,7 +109,7 @@ export default {
     //选择城市信息
     selectedCity(cityname) {
       this.changeCity(cityname);
-      this.$router.push({ name: "detailCity" });
+      this.$router.push("/");
     },
     goBack() {
       this.$router.push({ name: "detailCity" });

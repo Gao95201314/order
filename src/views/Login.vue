@@ -91,26 +91,31 @@ export default {
     // },
     //获取验证码
     getPhonecode() {
-      if (this.phone === "15111521187") {
-        axios
-          .post("/api/login", { codenum: this.code, phone: this.phone })
-          .then(res => {
-            console.log(res.data.body, "短信发送成功!");
-            this.$refs["dis"].style.color = "gray";
-            this.codes = res.data.body.codes;
-            cook("secondsremained", 60, 60); //设置过期时间并进行加密
-            const countdown = getCookieValue("secondsremained")
-              ? getCookieValue("secondsremained")
-              : 0; //获取过期的时间，并进行解密
-            if (countdown !== undefined && countdown > 0) {
-              this.settime(); //调用倒计时减减方法
-            }
+      if (
+        this.captchaBtnText == "获取验证码" ||
+        this.captchaBtnText == "重新获取"
+      ) {
+        if (this.phone === "15111521187") {
+          axios
+            .post("/api/login", { codenum: this.code, phone: this.phone })
+            .then(res => {
+              console.log(res.data.body, "短信发送成功!");
+              this.$refs["dis"].style.color = "gray";
+              this.codes = res.data.body.codes;
+              cook("secondsremained", 60, 60); //设置过期时间并进行加密
+              const countdown = getCookieValue("secondsremained")
+                ? getCookieValue("secondsremained")
+                : 0; //获取过期的时间，并进行解密
+              if (countdown !== undefined && countdown > 0) {
+                this.settime(); //调用倒计时减减方法
+              }
+            });
+        } else {
+          Toast({
+            message: "手机号码错误",
+            duration: 1000
           });
-      } else {
-        Toast({
-          message: "手机号码错误",
-          duration: 1000
-        });
+        }
       }
     },
     //登录

@@ -17,30 +17,30 @@
             <p class="profile-1_mtk">
               <span
                 ref="abab"
-                v-show="username!=''"
+                v-show="flag"
               >{{userInfoUser}}</span>
               <span
                 ref="baba"
                 @click="toLogin"
-                v-show="username==''"
+                v-show="!flag"
               >登录/注册</span>
             </p>
             <p class="profile-1UP72">
               <i class="iconfont icon-shouji"></i>
               <span
                 ref="aabb"
-                v-show="username!=''"
+                v-show="flag"
               >{{username}}</span>
               <span
                 ref="bbaa"
-                v-show="username==''"
+                v-show="!flag"
               >登录后享受更多特权</span>
             </p>
           </div>
           <span
             class="profile-2XuMq"
             ref="jiantou"
-            v-show="username!=''"
+            v-show="flag"
           >
             <i
               class="iconfont"
@@ -189,11 +189,12 @@ export default {
   data() {
     return {
       userInfoUser: "",
-      username: ""
+      username: "",
+      flag: false
     };
   },
   created() {
-    if (localStorage.getItem("username") !== "") {
+    if (localStorage.getItem("username")) {
       //   this.$refs["xxoo"].style.display = "none";
       //   this.$refs["aabb"].style.display = "none";
       //   this.$refs["abab"].style.display = "none";
@@ -202,9 +203,12 @@ export default {
       //   this.$refs["ooxx"].style.display = "none";
       //   this.$refs["bbaa"].style.display = "none";
       //   this.$refs["baba"].style.display = "none";
+      this.flag = true;
       let userName = JSON.parse(localStorage.getItem("username"));
       this.username = userName;
       this.userInfoUser = localStorage.getItem("user");
+    } else {
+      this.flag = false;
     }
   },
   methods: {
