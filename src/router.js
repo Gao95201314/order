@@ -176,7 +176,7 @@ const router = new VueRouter({
     },
     {
       //编辑收货地址
-      path: '/editAddress/:id',
+      path: '/editAddress',
       name: 'editAddress',
       component: () =>
         import('./views/editAddress.vue')

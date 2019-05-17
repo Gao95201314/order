@@ -148,7 +148,7 @@ export default {
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss">
 @import "@/styles/common/px2rem.scss";
 .evaluate {
   a {
@@ -166,6 +166,21 @@ export default {
       margin-top: px2rem(40);
       margin-bottom: px2rem(20);
     }
+    .el-rate {
+      height: px2rem(30) !important;
+      .el-rate__item {
+        height: px2rem(30) !important;
+        width: px2rem(30) !important;
+        .el-rate__icon {
+          font-size: px2rem(30);
+        }
+      }
+    }
+    .el-textarea {
+      .el-textarea__inner {
+        min-height: px2rem(140) !important;
+      }
+    }
   }
   .shangchuan {
     background-color: white;
@@ -174,6 +189,14 @@ export default {
       color: white;
       margin-bottom: px2rem(20);
     }
+
+    /* .tupian {
+      .el-upload--picture-card {
+        height: px2rem(120) !important;
+        width: px2rem(120) !important;
+        line-height: px2rem(120) !important;
+      }
+    } */
   }
 }
 </style>

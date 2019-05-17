@@ -165,7 +165,7 @@
             <span class="index-3Z8It"></span>
           </div>
         </div>
-        <div class="index-2MEEn">
+        <!-- <div class="index-2MEEn">
           <div class="index-161Mm">
             <i class="iconfont icon-changyonglogo40 address"></i>
           </div>
@@ -173,7 +173,7 @@
             下载APP
             <span class="index-3Z8It"></span>
           </div>
-        </div>
+        </div> -->
       </section>
       <div
         class="profile-2dyk_"

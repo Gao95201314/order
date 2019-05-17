@@ -85,10 +85,6 @@ export default {
         this.$refs["dis"].style.color = "gray";
       }
     },
-    //验证码
-    // handleGetCodeValue() {
-    //   this.code = e.target.value;
-    // },
     //获取验证码
     getPhonecode() {
       if (
